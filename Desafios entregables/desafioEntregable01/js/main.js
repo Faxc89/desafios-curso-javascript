@@ -14,12 +14,12 @@ let seguirComprando = false;
 let menuPrincipal = false;
 do{
     taza = prompt(` 
-    ¡${nombre} bienvenidx a la sección de Tazas! 
+    ¡${nombre} bienvenidx a la sección de Tazas☕! 
     ---------------------------------------
-    > MAPACHE
-    > ZORRO
-    > KOALA
-    > PANDA
+    > MAPACHE 🦝
+    > ZORRO 🦊
+    > KOALA 🐨
+    > PANDA 🐼
     ---------------------------------------
     Por favor escribe una opción:`).toUpperCase();
 
@@ -62,21 +62,19 @@ El total a pagar por tu compra es de $${precioTotal}.-
 let tipoPago = confirm(`
 ¿Querés abonar en cuotas?`);
 let cuotas = 0;
-
+const dividirCuotas = (monto, cuotas) => monto / cuotas;
 
 if (tipoPago == true) {
     cuotas = Number(prompt("En cuantas cuotas hará el pago\n\n 3, 6, 12?"));
-        function dividirCuotas(monto, cuotas){
-            precioFinal = monto / cuotas;
-            alert(`
-            Has elegido abonar en ${cuotas} cuotas,
-            el total a abonar es de $${precioFinal}.-`);
-            return;
-        }
+    precioFinal = dividirCuotas(precioTotal, cuotas).toFixed(2);
+    alert(`
+    Has elegido abonar en ${cuotas} cuotas,
+    el total a abonar es de $${precioFinal}.-
+    `);
 } else {
     alert(`
     Has elegido abonar en un solo pago,
-    el total a abonar es de $${precioTotal}.-`)
+    el total a abonar es de $${Math.round(precioTotal)}.-`)
 }
 
-dividirCuotas(precioTotal, cuotas);
+
